@@ -1,0 +1,129 @@
+#: import RiseInTrasition kivy.uix.screenmanager.RiseInTransition
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+<Empresas>:
+
+<ElementCard@MDCard>
+    radius: '10dp'
+    spacing: '10dp'
+    padding: '10dp'
+    image: ''
+    text: ''
+    sub_text: ''
+    orientation: 'vertical'
+    ripple_behavior: True
+    on_release: 
+        app.root.transition = RiseInTransition()
+    Image:
+        source: root.image
+ #   halign: 'center'
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: root.text
+            halign: 'center'
+        MDLabel:
+            text: root.sub_text
+            halign: 'center'
+
+<CustomizeScreen@MDBoxLayout>
+    orientation:vertical
+    text: ''
+    padding: 100
+    MDLabel:
+        text: root.text
+        halign: 'center'
+        pos_hint: {'center_x': .5}
+    MDFillRoundFlatButton:
+        text:'REGRESAR'
+        pos_hint: {'center_x': .5}
+        on_release:
+            app.root.current = 'screen_empresa'
+            app.root.transition = SlideTransition(direction='left')
+
+<ui>
+    MDScreen:
+        name: 'screen_empresa'
+        md_bg_color: 0,.5,.5,1
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout: 
+                size_hint: 1,0.2
+                orientation:'horizontal'
+                padding:'10dp'
+                MDCard:
+                    radius: '10dp'
+                    padding: '10dp'
+                    line_color: 1,0,1,1
+
+                    MDLabel:
+                        text: 'ELEGIR EMPRESA'
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+
+            MDGridLayout:
+                cols:3
+                size_hint: 1, .8
+                padding:['10dp','10dp','10dp','10dp']
+                spacing: '10dp'
+                
+                ElementCard:
+                    text: 'INBC'
+                    sub_text: 'Asistencia'
+                    image: 'image/inbc_logo.png'
+                    on_release:
+                        root.current = 'screen1'
+                ElementCard:
+                    text: 'ZOE'
+                    sub_text: 'Asistencia'
+                    image: 'image/zoe.png'
+                    on_release:
+                        root.current = 'screen2'
+                ElementCard:
+                    text: 'FEBRICO'
+                    sub_text: 'Asistencia'
+                    image: 'image/Febrico.png'
+                    on_release:
+                        root.current = 'screen3'
+                ElementCard:
+                    text: 'POLIWORLD'
+                    sub_text: 'Asistencia'
+                    image: 'image/poliworld.png'
+                    on_release:
+                        root.current = 'screen4'
+                ElementCard:
+                    text: 'ARIANA'
+                    sub_text: 'Asistencia'
+                    image: 'image/ariana.png'
+                    on_release:
+                        root.current = 'screen5'
+                ElementCard:
+                    text: 'EXTRA'
+                    sub_text: 'Asistencia'
+                    image: 'image/extra.png'
+                    on_release:
+                        root.current = 'screen6'
+    MDScreen:
+        name: 'screen1'
+        CustomizeScreen:
+            text: 'ASISTENCIA INBC'
+    MDScreen:
+        name: 'screen2'
+        CustomizeScreen:
+            text: 'ASISTENCIA ZOE'
+    MDScreen:
+        name: 'screen3'
+        CustomizeScreen:
+            text: 'ASISTENCIA FEBRICO'
+    MDScreen:
+        name: 'screen4'
+        CustomizeScreen:
+            text: 'ASISTENCIA POLIWORLD'
+    MDScreen:
+        name: 'screen5'
+        CustomizeScreen:
+            text: 'ASISTENCIA ARIANA'
+    MDScreen:
+        name: 'screen6'
+        CustomizeScreen:
+            text: 'ASISTENCIA EXTRA'

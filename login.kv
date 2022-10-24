@@ -1,0 +1,76 @@
+#:kivy 1.0
+<login>:
+
+    MDFloatLayout:
+        id: login_layout
+        md_bg_color: 46/255,181/255,212/255, 1
+
+        MDIconButton:
+            icon: "chevron-left"
+            user_font_size: "35sp"
+            pos_hint: {"center_y": .95}
+
+        Image:
+            source:"img/usuario.png"
+            size_hint: .36, .36         
+            pos_hint: {"center_x": .5, "center_y": .8}
+
+        MDLabel: 
+            text: "Atras"
+            font_size: "18sp"
+            font_name: "estilo_letras/Poppins-Regular.ttf"
+            pos_hint: {"center_x": .615, "center_y": .949}
+    
+        MDLabel: 
+            text: "AUTENTICACIÓN"
+            font_size: "22sp"
+            font_name: "estilo_letras/Poppins-Medium.ttf"
+            color: 0/255, 0/255, 0/255,1
+            pos_hint: {"center_x": .75, "center_y": .65}
+
+        MDTextField:
+            id: input_user
+            hint_text: "Usuario"
+            helper_text: ""
+            font_name: "estilo_letras/Poppins-Regular.ttf"
+            helper_text_mode: "persistent"
+            pos_hint:{"center_x": .5, "center_y": .52}
+            size_hint_x: .85
+            line_color_focus: 0,0,0,1
+
+        Image:
+            source: "img/user.png"
+            size_hint: .10, .10
+            pos_hint: {"center_x": .90, "center_y": .54}
+
+        MDTextField:
+            id: input_password
+            hint_text: "Contraseña"
+            helper_text: ""
+            font_name: "estilo_letras/Poppins-Regular.ttf"
+            helper_text_mode: "persistent"
+            pos_hint:{"center_x": .5, "center_y": .42}
+            size_hint_x: .85
+            line_color_focus: 0,0,0,1
+            password: True
+
+        Image:
+            source: "img/key.png"
+            size_hint: .10, .10
+            pos_hint: {"center_x": .90, "center_y": .44}
+
+        MDFlatButton:
+            text: "INGRESAR"
+            size_hint: .79, .08
+            font_size: "20sp"
+            font_name: "estilo_letras/Poppins-Medium.ttf"
+            pos_hint:{"center_x": .50, "center_y": .28}
+
+            canvas.before:
+                Color:
+                    rgb: 41/255, 135/255, 168/255, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [6]
+            on_release: root.connect()
